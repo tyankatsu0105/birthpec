@@ -17,3 +17,9 @@
 ```bash
 npm install -D birthpec
 ```
+
+## Development
+
+```bash
+npm run sandbox
+```

@@ -1,7 +1,7 @@
 {
   "name": "birthpec",
   "version": "0.0.1",
-  "description": "",
+  "description": "Create spec file template with ejs on CLI",
   "keywords": [],
   "homepage": "https://github.com/tyankatsu0105/birthpec#readme",
   "bugs": {
@@ -13,14 +13,28 @@
   },
   "license": "MIT",
   "author": "tyankatsu <frips.ryilsufupe+dev@gmail.com> (https://tyankatsu.netlify.com/)",
+  "main": "dist/cli/index.js",
+  "bin": {
+    "birthpec": "dist/bin/birthpec.js"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "sh scripts/build",
     "precommit": "lint-staged",
     "commit": "git-cz",
+    "dev": "tsc -w",
     "release:prepare": "shipjs prepare",
-    "release:trigger": "shipjs trigger"
+    "release:trigger": "shipjs trigger",
+    "sandbox": "sh scripts/sandbox",
+    "typecheck": "tsc --project ./tsconfig.build.json --noEmit"
   },
   "lint-staged": {
-    "*.md": [
+    "*.ts": [
+      "eslint --fix"
+    ],
+    "*.{md,yml}": [
       "prettier --write"
     ],
     "package.json": [
@@ -32,11 +46,26 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "dependencies": {
+    "boxen": "^4.2.0",
+    "commander": "^5.1.0",
+    "ejs": "^3.1.2",
+    "front-matter": "^3.1.0"
+  },
   "devDependencies": {
+    "@types/ejs": "^3.0.3",
+    "@types/eslint": "^6.8.0",
+    "@types/fs-extra": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
     "commitizen": "^4.1.2",
     "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
     "lint-staged": "^10.2.2",
     "prettier": "^2.0.5",
-    "shipjs": "0.18.4"
+    "shipjs": "0.18.4",
+    "typescript": "^3.8.3"
   }
 }
