@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+
 jobs:
   release:
     name: Release
@@ -12,7 +13,7 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
-          
+
       - uses: actions/cache@v1
         id: cache
         with:
@@ -24,13 +25,13 @@ jobs:
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
           node-version: '12.x'
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
-      
+
       - run: git fetch
 
       - run: npm run release:trigger

@@ -31,11 +31,11 @@
     "typecheck": "tsc --project ./tsconfig.build.json --noEmit"
   },
   "lint-staged": {
-    "*.md": [
-      "prettier --write"
-    ],
     "*.ts": [
       "eslint --fix"
+    ],
+    "*.{md,yml}": [
+      "prettier --write"
     ],
     "package.json": [
       "npx sort-package-json"
