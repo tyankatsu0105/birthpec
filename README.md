@@ -1,5 +1,8 @@
 # Birthpec
 
+[![npm version](https://badge.fury.io/js/birthpec.svg)](https://badge.fury.io/js/birthpec)
+[![deploy](https://img.shields.io/badge/deploy-🛳%20Ship.js-blue?style=flat)](https://github.com/algolia/shipjs)
+
 🚧WIP🚧
 
 > Birth spec files.
