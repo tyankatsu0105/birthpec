@@ -13,12 +13,15 @@
   },
   "license": "MIT",
   "author": "tyankatsu <frips.ryilsufupe+dev@gmail.com> (https://tyankatsu.netlify.com/)",
-  "main": "dist/index.js",
+  "main": "dist/cli/index.js",
   "bin": {
     "birthpec": "dist/bin/birthpec.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc --project ./tsconfig.build.json",
+    "build": "sh scripts/build",
     "precommit": "lint-staged",
     "commit": "git-cz",
     "dev": "tsc -w",
@@ -43,8 +46,16 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "dependencies": {
+    "boxen": "^4.2.0",
+    "commander": "^5.1.0",
+    "ejs": "^3.1.2",
+    "front-matter": "^3.1.0"
+  },
   "devDependencies": {
+    "@types/ejs": "^3.0.3",
     "@types/eslint": "^6.8.0",
+    "@types/fs-extra": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
     "commitizen": "^4.1.2",
