@@ -1,6 +1,6 @@
 {
   "name": "birthpec",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "keywords": [],
   "homepage": "https://github.com/tyankatsu0105/birthpec#readme",
@@ -15,11 +15,16 @@
   "author": "tyankatsu <frips.ryilsufupe+dev@gmail.com> (https://tyankatsu.netlify.com/)",
   "scripts": {
     "precommit": "lint-staged",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "release:prepare": "shipjs prepare",
+    "release:trigger": "shipjs trigger"
   },
   "lint-staged": {
     "*.md": [
       "prettier --write"
+    ],
+    "package.json": [
+      "npx sort-package-json"
     ]
   },
   "config": {
@@ -31,6 +36,7 @@
     "commitizen": "^4.1.2",
     "cz-conventional-changelog": "^3.2.0",
     "lint-staged": "^10.2.2",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "shipjs": "0.18.4"
   }
 }
