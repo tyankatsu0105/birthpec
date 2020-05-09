@@ -1,0 +1,7 @@
+#!/bin/bash
+npm link
+cd sandbox
+npm link birthpec
+clear
+
+npx birthpec

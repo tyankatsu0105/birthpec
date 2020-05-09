@@ -1,18 +1,18 @@
-name: Release
-on:
-  push:
-    branches:
-      - master
+name: Test
+
+on: push
 
 jobs:
-  release:
-    name: Release
+  test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        # Test with Node.js v10 (LTS), v12 (LTS), and v14 (latest)
+        node-version: [10.x, 12.x, 14.x]
+
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: master
-          fetch-depth: 0
 
       - uses: actions/cache@v1
         id: cache
@@ -21,20 +21,14 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
-
-      - name: Use Node.js 12
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          registry-url: 'https://registry.npmjs.org'
-          node-version: '12.x'
+          node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - run: git fetch
-
-      - run: npm run release:trigger
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Typecheck
+        run: npm run typecheck
