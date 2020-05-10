@@ -7,7 +7,6 @@ type PackageJson = {
  */
 /* eslint-disable-next-line */
 const pkg: PackageJson = require('../../../package.json');
-const { version } = pkg;
 
-export const VERSION = version;
+export const VERSION = pkg.version;
 export const PROJECT_NAME = 'birthpec';

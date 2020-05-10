@@ -8,7 +8,7 @@ const templatePath = path.join(__dirname, templateName);
 const distPath = path.join(process.cwd(), templateName);
 
 const { logInfo } = logBox();
-export const createTemplate = () => {
+export const createTemplates = () => {
   fs.copySync(templatePath, distPath);
   logInfo(`${templateName} is created on your project's root.`);
 };

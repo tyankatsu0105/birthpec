@@ -1,5 +1,5 @@
-import { createTemplate } from './create-template';
+import { createTemplates } from './create-templates';
 
 export const init = (): void => {
-  createTemplate();
+  createTemplates();
 };

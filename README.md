@@ -18,6 +18,15 @@
 npm install -D birthpec
 ```
 
+### Reserved Words
+
+| name                 | type     | description    |
+| :------------------- | :------- | -------------- |
+| `<%= name %>`        | string   | file name      |
+| `<%= filePath %>`    | string   | file path      |
+| `<%= extension %>`   | string   | file extension |
+| `<%= exportItems %>` | string[] | export items   |
+
 ## Development
 
 ```bash
