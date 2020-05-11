@@ -1,0 +1,14 @@
+---
+to: <%= dirName %>/__tests__/<%= fileName %>.spec.<%= extensionName %>
+---
+import {<% for (const exportItem of exportItems) { %> <%= exportItem %>, <% } %>} from '../<%= fileName %>';
+
+describe('<%= helper.projectName %> <%= helper.changeCase.camelCase(fileName) %>', () => {
+  <% for (const exportItem of exportItems) { %>
+  describe('<%= exportItem %>', () => {
+    it('', () => {
+      
+    });
+  });
+  <% } %>
+});
