@@ -1,4 +1,4 @@
-<p align="center"><img width="143px" height="130px" src="https://github.com/tyankatsu0105/birthpec/tree/master/assets/logo.png" alt="Birth spec files"></p>
+<p align="center"><img width="143px" height="130px" src="https://github.com/tyankatsu0105/birthpec/blob/master/assets/logo.png" alt="Birth spec files"></p>
 
 <h2 align="center">birthpec</h2>
 <p align="center">
