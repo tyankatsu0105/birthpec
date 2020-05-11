@@ -5,7 +5,6 @@ type Text = Parameters<typeof boxen>[0];
 
 const commonOption: Options = {
   borderStyle: BorderStyle.Round,
-  float: 'center',
   padding: 1,
   margin: 1,
 };
