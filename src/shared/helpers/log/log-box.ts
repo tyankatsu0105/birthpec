@@ -1,4 +1,5 @@
 import boxen, { Options, BorderStyle } from 'boxen';
+import { PROJECT_NAME } from '../../const';
 
 type Text = Parameters<typeof boxen>[0];
 
@@ -12,10 +13,16 @@ const commonOption: Options = {
 export const logBox = () => {
   return {
     logInfo(text: Text) {
-      console.log(boxen(`${text}`, { ...commonOption, borderColor: 'green' }));
+      console.log(boxen(text, { ...commonOption, borderColor: 'green' }));
     },
-    logError(text: Text) {
-      console.log(boxen(text, { ...commonOption, borderColor: 'red' }));
+    logExit(callback: (projectName: string) => string) {
+      const text = callback(PROJECT_NAME);
+      console.log(
+        boxen(`${text}\nSee you👋`, {
+          ...commonOption,
+          borderColor: 'cyan',
+        })
+      );
     },
   };
 };
