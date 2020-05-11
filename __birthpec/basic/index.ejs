@@ -1,0 +1,14 @@
+---
+to: <%= filePath %>/__tests__/<%= name %>.spec.<%= extension %>
+---
+import {<%= exportItems %>} from '<%= name %>';
+
+describe('<%= name %>', () => {
+  <% for (const exportItem of exportItems) { %>
+    describe('<%= exportItem %>', () => {
+      it('', () => {
+        
+      });
+    });
+  <% } %>
+});

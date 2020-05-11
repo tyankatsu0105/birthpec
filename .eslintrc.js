@@ -4,6 +4,9 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
   },
+  env: {
+    "node": true
+  },
   parser: '@typescript-eslint/parser',
   plugins: [
     '@typescript-eslint',

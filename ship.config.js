@@ -1,4 +1,4 @@
 module.exports = {
-  mergeStrategy: { toReleaseBranch: { develop: "master" } },
+  mergeStrategy: { toReleaseBranch: { develop: 'master' } },
   buildCommand: () => null,
 };
