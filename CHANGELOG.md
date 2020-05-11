@@ -1,3 +1,12 @@
+## 0.1.4 (2020-05-11)
+
+
+### Bug Fixes
+
+* fix boxen float, dependencies includes eslint, and typescript ([#15](https://github.com/tyankatsu0105/birthpec/issues/15)) ([871c951](https://github.com/tyankatsu0105/birthpec/commit/871c951a582c6a9b95a3c2f4c21f7afebf06ec45))
+
+
+
 ## 0.1.3 (2020-05-11)
 
 
