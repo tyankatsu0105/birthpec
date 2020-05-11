@@ -190,7 +190,7 @@ Now supports:
 
 ## Config
 
-Please create `.birthpec.rc.js` on your root.
+Please create `.birthpecrc.js` on your root.
 
 ### templates
 
