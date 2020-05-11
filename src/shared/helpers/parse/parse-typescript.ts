@@ -13,7 +13,7 @@ import { Generate } from '../../../types';
  * Only support ES modules
  */
 const getExportItems = (ast: TSESTree.Program) => {
-  const exportItems: string[] = [];
+  const exportItems: string[] | null = [];
 
   const exportDeclarations: TSESTree.Statement[] = ast.body.filter(
     ({ type }: { type: unknown }) =>
@@ -38,7 +38,9 @@ const getExportItems = (ast: TSESTree.Program) => {
   /**
    * NOTE: Consider duplicate value
    */
-  return { exportItems: [...new Set(exportItems)] };
+  return {
+    exportItems: exportItems.length > 1 ? [...new Set(exportItems)] : null,
+  };
 };
 
 export const parseTypescript = (targetFilePath: Generate['targetFilePath']) => {
