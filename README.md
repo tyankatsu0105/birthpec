@@ -23,6 +23,11 @@
 </p>
 
 - Generate spec file
+  - Supports
+    - js
+    - ts
+    - jsx
+    - tsx
 - Read exports items
 - Be able to config with `.birthpecrc.js`
 - Be able to edit template with ejs

@@ -39,7 +39,7 @@ const getExportItems = (ast: TSESTree.Program) => {
    * NOTE: Consider duplicate value
    */
   return {
-    exportItems: exportItems.length > 1 ? [...new Set(exportItems)] : null,
+    exportItems: exportItems.length > 0 ? [...new Set(exportItems)] : null,
   };
 };
 
@@ -47,7 +47,11 @@ export const parseTypescript = (targetFilePath: Generate['targetFilePath']) => {
   /* eslint-disable-next-line */
   try {
     const template = fs.readFileSync(targetFilePath, { encoding: 'utf-8' });
-    const ast = parse(template, { sourceType: 'module' });
+
+    const ast = parse(template, {
+      sourceType: 'module',
+      ecmaFeatures: { jsx: true },
+    });
 
     const { exportItems } = getExportItems(ast);
     return {
