@@ -2,7 +2,10 @@
 
 <h2 align="center">birthpec</h2>
 <p align="center">
-  Birth spec file 👶.
+  Birth spec file 👶
+</p>
+<p align="center">
+🚧WIP🚧
 </p>
 
 <p align="center">
@@ -18,8 +21,6 @@
   <br>
   <br>
 </p>
-
-🚧WIP🚧
 
 - Generate spec file
 - Read exports items
@@ -173,6 +174,14 @@ Current supports:
 - TSExportAssignment
 
 > commonjs has not supported yet.
+
+##### front-matter
+
+You can use front-matter syntax in ejs template file.
+Now supports:
+
+- to
+  - generate path
 
 ## Config
 
