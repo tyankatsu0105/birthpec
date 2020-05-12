@@ -11,9 +11,11 @@ import { Generate } from '../../../types';
 /**
  * Get names at "Identifier"
  * Only support ES modules
+ * You can check ast at [astexplorer](https://astexplorer.net/#/VeRiaJxlcX)
+ * @see https://tc39.es/ecma262/#sec-exports
  */
-const getExportItems = (ast: TSESTree.Program) => {
-  const exportItems: string[] | null = [];
+export const getExportItems = (ast: TSESTree.Program) => {
+  const exportItems: string[] = [];
 
   const exportDeclarations: TSESTree.Statement[] = ast.body.filter(
     ({ type }: { type: unknown }) =>
@@ -29,17 +31,50 @@ const getExportItems = (ast: TSESTree.Program) => {
 
   simpleTraverse(filterdAst, {
     enter(node) {
-      if (node.type === AST_NODE_TYPES['Identifier']) {
-        exportItems.push(node.name);
+      if (
+        node.type === AST_NODE_TYPES['VariableDeclarator'] &&
+        node.id.type === AST_NODE_TYPES['Identifier']
+      ) {
+        exportItems.push(node.id.name);
+      }
+
+      if (node.type === AST_NODE_TYPES['FunctionDeclaration'] && node.id) {
+        exportItems.push(node.id.name);
+      }
+
+      if (node.type === AST_NODE_TYPES['ExportSpecifier']) {
+        /**
+         * Note: consider export { myFunction as default };
+         */
+        if (node.exported.name === 'default') {
+          exportItems.push(node.local.name);
+        } else {
+          exportItems.push(node.exported.name);
+        }
+      }
+
+      if (
+        node.type === AST_NODE_TYPES['ExportDefaultDeclaration'] &&
+        node.declaration.type === AST_NODE_TYPES['Identifier']
+      ) {
+        exportItems.push(node.declaration.name);
+      }
+
+      if (node.type === AST_NODE_TYPES['ClassDeclaration'] && node.id) {
+        exportItems.push(node.id.name);
+      }
+
+      if (
+        node.type === AST_NODE_TYPES['AssignmentExpression'] &&
+        node.left.type === AST_NODE_TYPES['Identifier']
+      ) {
+        exportItems.push(node.left.name);
       }
     },
   });
 
-  /**
-   * NOTE: Consider duplicate value
-   */
   return {
-    exportItems: exportItems.length > 0 ? [...new Set(exportItems)] : null,
+    exportItems,
   };
 };
 
