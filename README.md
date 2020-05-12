@@ -22,6 +22,8 @@
   <br>
 </p>
 
+![demo](https://github.com/tyankatsu0105/birthpec/blob/develop/assets/demo.gif)
+
 - Generate spec file
   - Supports
     - js
