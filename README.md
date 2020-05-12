@@ -242,7 +242,7 @@ cd ./sandbox
 birthpec init
 ```
 
-## Inspired of
+## Inspired by
 
 [hygen](https://github.com/jondot/hygen)
 
