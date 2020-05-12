@@ -15,8 +15,12 @@ import { Generate } from '../../../types';
  * @see https://tc39.es/ecma262/#sec-exports
  */
 export const getExportItems = (ast: TSESTree.Program) => {
-  let exportItems: string[] = [];
-  let removableItems: string[] = [];
+  const exportItems: string[] = [];
+  // const removableItems: {
+  //   value: string;
+  //   type: 'Identifier' | 'ExportSpecifier' | 'VariableDeclarator';
+  //   range: [number, number];
+  // }[] = [];
 
   const exportDeclarations: TSESTree.Statement[] = ast.body.filter(
     ({ type }: { type: unknown }) =>
@@ -33,35 +37,49 @@ export const getExportItems = (ast: TSESTree.Program) => {
   simpleTraverse(filterdAst, {
     enter(node) {
       if (
-        node.type === AST_NODE_TYPES['Identifier'] ||
-        node.type === AST_NODE_TYPES['ExportSpecifier']
+        node.type === AST_NODE_TYPES['VariableDeclarator'] &&
+        node.id.type === AST_NODE_TYPES['Identifier']
       ) {
-        if (node.type === AST_NODE_TYPES['ExportSpecifier']) {
-          if (node.local.name !== node.exported.name) {
-            exportItems.push(node.exported.name);
-            removableItems.push(node.local.name);
-          }
-        }
+        exportItems.push(node.id.name);
+      }
 
-        if (node.type === AST_NODE_TYPES['Identifier']) {
-          exportItems.push(node.name);
+      if (node.type === AST_NODE_TYPES['FunctionDeclaration'] && node.id) {
+        exportItems.push(node.id.name);
+      }
+
+      if (node.type === AST_NODE_TYPES['ExportSpecifier']) {
+        /**
+         * Note: consider export { myFunction as default };
+         */
+        if (node.exported.name === 'default') {
+          exportItems.push(node.local.name);
+        } else {
+          exportItems.push(node.exported.name);
         }
+      }
+
+      if (
+        node.type === AST_NODE_TYPES['ExportDefaultDeclaration'] &&
+        node.declaration.type === AST_NODE_TYPES['Identifier']
+      ) {
+        exportItems.push(node.declaration.name);
+      }
+
+      if (node.type === AST_NODE_TYPES['ClassDeclaration'] && node.id) {
+        exportItems.push(node.id.name);
+      }
+
+      if (
+        node.type === AST_NODE_TYPES['AssignmentExpression'] &&
+        node.left.type === AST_NODE_TYPES['Identifier']
+      ) {
+        exportItems.push(node.left.name);
       }
     },
   });
 
-  exportItems = [...new Set(exportItems)];
-  removableItems = [...new Set(removableItems)];
-
-  const result = exportItems.filter(
-    (exportItem) => !removableItems.includes(exportItem)
-  );
-
-  /**
-   * NOTE: Consider duplicate value
-   */
   return {
-    exportItems: exportItems.length > 0 ? result : null,
+    exportItems,
   };
 };
 
