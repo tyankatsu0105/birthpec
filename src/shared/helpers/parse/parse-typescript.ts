@@ -11,8 +11,9 @@ import { Generate } from '../../../types';
 /**
  * Get names at "Identifier"
  * Only support ES modules
+ * You can check ast at [astexplorer](https://astexplorer.net/#/VeRiaJxlcX)
  */
-const getExportItems = (ast: TSESTree.Program) => {
+export const getExportItems = (ast: TSESTree.Program) => {
   const exportItems: string[] | null = [];
 
   const exportDeclarations: TSESTree.Statement[] = ast.body.filter(
