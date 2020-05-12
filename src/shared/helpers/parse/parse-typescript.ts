@@ -16,11 +16,6 @@ import { Generate } from '../../../types';
  */
 export const getExportItems = (ast: TSESTree.Program) => {
   const exportItems: string[] = [];
-  // const removableItems: {
-  //   value: string;
-  //   type: 'Identifier' | 'ExportSpecifier' | 'VariableDeclarator';
-  //   range: [number, number];
-  // }[] = [];
 
   const exportDeclarations: TSESTree.Statement[] = ast.body.filter(
     ({ type }: { type: unknown }) =>

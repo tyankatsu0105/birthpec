@@ -1,6 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["**/__test__/**/*"],
   "compilerOptions": {
     "removeComments": true
   }
