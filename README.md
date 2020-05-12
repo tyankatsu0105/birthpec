@@ -177,12 +177,6 @@ export const fn = () => 2;
 
 birthpec use [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser).
 
-Current supports:
-
-- ExportNamedDeclaration
-- ExportDefaultDeclaration
-- TSExportAssignment
-
 > commonjs has not supported yet.
 
 ##### front-matter
