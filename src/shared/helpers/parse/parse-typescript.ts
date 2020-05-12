@@ -12,9 +12,11 @@ import { Generate } from '../../../types';
  * Get names at "Identifier"
  * Only support ES modules
  * You can check ast at [astexplorer](https://astexplorer.net/#/VeRiaJxlcX)
+ * @see https://tc39.es/ecma262/#sec-exports
  */
 export const getExportItems = (ast: TSESTree.Program) => {
-  const exportItems: string[] | null = [];
+  let exportItems: string[] = [];
+  let removableItems: string[] = [];
 
   const exportDeclarations: TSESTree.Statement[] = ast.body.filter(
     ({ type }: { type: unknown }) =>
@@ -30,17 +32,36 @@ export const getExportItems = (ast: TSESTree.Program) => {
 
   simpleTraverse(filterdAst, {
     enter(node) {
-      if (node.type === AST_NODE_TYPES['Identifier']) {
-        exportItems.push(node.name);
+      if (
+        node.type === AST_NODE_TYPES['Identifier'] ||
+        node.type === AST_NODE_TYPES['ExportSpecifier']
+      ) {
+        if (node.type === AST_NODE_TYPES['ExportSpecifier']) {
+          if (node.local.name !== node.exported.name) {
+            exportItems.push(node.exported.name);
+            removableItems.push(node.local.name);
+          }
+        }
+
+        if (node.type === AST_NODE_TYPES['Identifier']) {
+          exportItems.push(node.name);
+        }
       }
     },
   });
+
+  exportItems = [...new Set(exportItems)];
+  removableItems = [...new Set(removableItems)];
+
+  const result = exportItems.filter(
+    (exportItem) => !removableItems.includes(exportItem)
+  );
 
   /**
    * NOTE: Consider duplicate value
    */
   return {
-    exportItems: exportItems.length > 0 ? [...new Set(exportItems)] : null,
+    exportItems: exportItems.length > 0 ? result : null,
   };
 };
 
