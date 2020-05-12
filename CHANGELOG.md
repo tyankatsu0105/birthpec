@@ -1,3 +1,12 @@
+## 0.1.5 (2020-05-12)
+
+
+### Features
+
+* add json-schema ([#18](https://github.com/tyankatsu0105/birthpec/issues/18)) ([c1f27da](https://github.com/tyankatsu0105/birthpec/commit/c1f27da0aafbf3be9ca2dd21e8a8043424aa9c5d))
+
+
+
 ## 0.1.4 (2020-05-11)
 
 

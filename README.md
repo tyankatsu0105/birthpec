@@ -28,7 +28,7 @@
     - ts
     - jsx
     - tsx
-- Read exports items
+- Read export item's identifier
 - Be able to config with `.birthpecrc.js`
 - Be able to edit template with ejs
 
@@ -128,7 +128,7 @@ describe('<%= helper.projectName %> <%= helper.changeCase.camelCase(fileName) %>
 });
 ```
 
-You should include `index.ejs` into template directory.
+You should include `index.ejs` into the template directory.
 
 For example:
 
@@ -153,7 +153,8 @@ In this case, when run `birthpec basic src/index.ts`, birthpec see `__birthpec/b
 
 #### Reserved words
 
-You can edit template
+You can edit template.  
+Also these items helps you to edit template with ejs.
 
 | name                   | type     | description         | example                        |
 | :--------------------- | :------- | ------------------- | :----------------------------- |
@@ -171,6 +172,8 @@ export const fn = () => 2;
 
 // exportItems => ['foo', 'fn']
 ```
+
+birthpec use [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser).
 
 Current supports:
 
@@ -190,7 +193,7 @@ Now supports:
 
 ## Config
 
-Please create `.birthpec.rc.js` on your root.
+Please create `.birthpecrc.js` on your root.
 
 ### templates
 
