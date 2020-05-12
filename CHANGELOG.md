@@ -1,3 +1,12 @@
+## 0.1.6 (2020-05-12)
+
+
+### Bug Fixes
+
+* fix parse typescript ([#26](https://github.com/tyankatsu0105/birthpec/issues/26)) ([0532a83](https://github.com/tyankatsu0105/birthpec/commit/0532a830742f23c422a999207742fa0462826a27))
+
+
+
 ## 0.1.5 (2020-05-12)
 
 

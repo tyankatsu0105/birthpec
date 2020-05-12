@@ -22,6 +22,8 @@
   <br>
 </p>
 
+![demo](https://github.com/tyankatsu0105/birthpec/blob/develop/assets/demo.gif)
+
 - Generate spec file
   - Supports
     - js
@@ -174,12 +176,6 @@ export const fn = () => 2;
 ```
 
 birthpec use [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser).
-
-Current supports:
-
-- ExportNamedDeclaration
-- ExportDefaultDeclaration
-- TSExportAssignment
 
 > commonjs has not supported yet.
 
