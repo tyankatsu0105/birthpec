@@ -1,4 +1,4 @@
-<p align="center"><img width="300px" height="280px" src="https://github.com/tyankatsu0105/birthpec/blob/develop/assets/logo.png" alt="Birth spec files"></p>
+<p align="center"><img width="300px" height="280px" src="https://raw.githubusercontent.com/tyankatsu0105/birthpec/develop/assets/logo.png" alt="Birth spec files"></p>
 
 <h2 align="center">birthpec</h2>
 <p align="center">
@@ -22,7 +22,7 @@
   <br>
 </p>
 
-![demo](https://github.com/tyankatsu0105/birthpec/blob/develop/assets/demo.gif)
+![demo](https://raw.githubusercontent.com/tyankatsu0105/birthpec/develop/assets/demo.gif)
 
 - Generate spec file
   - Supports
