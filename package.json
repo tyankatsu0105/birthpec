@@ -1,6 +1,6 @@
 {
   "name": "birthpec",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Create spec file template with ejs on CLI",
   "keywords": [],
   "homepage": "https://github.com/tyankatsu0105/birthpec#readme",
@@ -57,7 +57,7 @@
     "ejs": "^3.1.2",
     "enquirer": "^2.3.5",
     "eslint": "^7.0.0",
-    "front-matter": "git+https://github.com/tyankatsu0105/front-matter.git",
+    "front-matter": "^3.2.0",
     "fs-extra": "^9.0.0",
     "json-schema": "^0.2.5",
     "typescript": "^3.8.3"
