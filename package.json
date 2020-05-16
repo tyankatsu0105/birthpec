@@ -2,7 +2,18 @@
   "name": "birthpec",
   "version": "0.1.10",
   "description": "Create spec file template with ejs on CLI",
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "template",
+    "boilerplate",
+    "generator",
+    "ejs",
+    "test",
+    "js",
+    "jsx",
+    "ts",
+    "tsx"
+  ],
   "homepage": "https://github.com/tyankatsu0105/birthpec#readme",
   "bugs": {
     "url": "https://github.com/tyankatsu0105/birthpec/issues"
