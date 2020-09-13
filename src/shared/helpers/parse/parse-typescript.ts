@@ -8,6 +8,27 @@ import {
 
 import { Generate } from '../../../types';
 
+const traverseObjectPattern = (
+  properties: (
+    | TSESTree.PropertyComputedName
+    | TSESTree.PropertyNonComputedName
+    | TSESTree.RestElement
+  )[],
+  callback: (
+    property: TSESTree.PropertyComputedName | TSESTree.PropertyNonComputedName
+  ) => void
+) => {
+  for (const property of properties) {
+    if (property.type === AST_NODE_TYPES['Property']) {
+      if (property.value.type === AST_NODE_TYPES['Identifier']) {
+        callback(property);
+      } else if (property.value.type === AST_NODE_TYPES['ObjectPattern']) {
+        traverseObjectPattern(property.value.properties, callback);
+      }
+    }
+  }
+};
+
 /**
  * Get names at "Identifier"
  * Only support ES modules
@@ -31,11 +52,17 @@ export const getExportItems = (ast: TSESTree.Program) => {
 
   simpleTraverse(filterdAst, {
     enter(node) {
-      if (
-        node.type === AST_NODE_TYPES['VariableDeclarator'] &&
-        node.id.type === AST_NODE_TYPES['Identifier']
-      ) {
-        exportItems.push(node.id.name);
+      if (node.type === AST_NODE_TYPES['VariableDeclarator']) {
+        if (node.id.type === AST_NODE_TYPES['Identifier']) {
+          exportItems.push(node.id.name);
+        }
+
+        if (node.id.type === AST_NODE_TYPES['ObjectPattern']) {
+          traverseObjectPattern(node.id.properties, (property) => {
+            property.value.type === AST_NODE_TYPES['Identifier'] &&
+              exportItems.push(property.value.name);
+          });
+        }
       }
 
       if (node.type === AST_NODE_TYPES['FunctionDeclaration'] && node.id) {
