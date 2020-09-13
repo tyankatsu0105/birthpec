@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/tyankatsu0105/birthpec/compare/v0.1.12...v0.2.0) (2020-09-13)
+
+
+### Features
+
+* **typescript:** support ObjectPattern ([#43](https://github.com/tyankatsu0105/birthpec/issues/43)) ([3fdc74e](https://github.com/tyankatsu0105/birthpec/commit/3fdc74ec254292873fa42a4b54720626bfbe5972))
+
+
+
 ## [0.1.12](https://github.com/tyankatsu0105/birthpec/compare/v0.1.10...v0.1.12) (2020-09-13)
 
 
