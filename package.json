@@ -1,6 +1,6 @@
 {
   "name": "birthpec",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Create spec file template with ejs on CLI",
   "keywords": [
     "cli",
