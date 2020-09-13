@@ -36,8 +36,7 @@
     "precommit": "lint-staged",
     "commit": "git-cz",
     "dev": "tsc -w",
-    "release:prepare": "shipjs prepare",
-    "release:trigger": "shipjs trigger",
+    "release": "shipjs prepare",
     "sandbox": "sh scripts/sandbox",
     "test": "jest",
     "typecheck": "tsc --project ./tsconfig.build.json --noEmit"
@@ -86,7 +85,7 @@
     "jest": "^26.0.1",
     "lint-staged": "^10.2.2",
     "prettier": "^2.0.5",
-    "shipjs": "^0.19.0",
+    "shipjs": "0.21.0",
     "ts-jest": "^25.5.1"
   }
 }
