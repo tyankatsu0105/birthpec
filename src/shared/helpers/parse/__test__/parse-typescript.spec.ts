@@ -36,7 +36,15 @@ describe('parse-typescrript', () => {
       const { ast } = getAST('function.ts');
 
       const { exportItems } = getExportItems(ast);
-      expect(exportItems).toEqual(['fn', 'fn2', 'fn3', 'fn4']);
+      expect(exportItems).toEqual([
+        'fn',
+        'fn2',
+        'fn3',
+        'fn4',
+        'fn6',
+        'fn7',
+        'insideFn',
+      ]);
     });
 
     it('Class', () => {
