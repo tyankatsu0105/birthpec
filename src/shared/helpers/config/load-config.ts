@@ -1,7 +1,7 @@
 import { cosmiconfigSync } from 'cosmiconfig';
-import { PROJECT_NAME } from '../../const';
 
 import type { Config } from '../../../types';
+import { PROJECT_NAME } from '../../const';
 
 const explorerSync = cosmiconfigSync(PROJECT_NAME);
 const searchedFor = explorerSync.search();

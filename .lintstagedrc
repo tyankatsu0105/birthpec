@@ -1,0 +1,11 @@
+{
+  "*.ts": [
+    "eslint --fix"
+  ],
+  "*.{md,js,ts,yaml}": [
+    "prettier --write"
+  ],
+  "package.json": [
+    "npx sort-package-json"
+  ]
+}

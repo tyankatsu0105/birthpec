@@ -1,4 +1,5 @@
 import path from 'path';
+
 import { Generate } from '../../../types';
 
 export const parseFile = (targetFilePath: Generate['targetFilePath']) => {
@@ -11,8 +12,8 @@ export const parseFile = (targetFilePath: Generate['targetFilePath']) => {
   const extensionName = path.extname(targetFilePath).substring(1);
 
   return {
-    fileName,
     dirName,
     extensionName,
+    fileName,
   };
 };

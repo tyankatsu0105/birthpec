@@ -1,6 +1,7 @@
-import path from 'path';
 import fs from 'fs-extra';
-import { logBox, CONFIG_NAME } from '../../shared';
+import path from 'path';
+
+import { CONFIG_NAME, logBox } from '../../shared';
 
 const templateName = '__birthpec';
 

@@ -1,7 +1,7 @@
 import { program } from 'commander';
 
-import { VERSION, PROJECT_NAME } from '../shared';
-import { init, generate } from '../lib';
+import { generate, init } from '../lib';
+import { PROJECT_NAME, VERSION } from '../shared';
 
 program.helpOption('-h, --help', 'Show help');
 
@@ -12,7 +12,7 @@ program
   .description('Run config initialization wizard')
   .arguments('<template-name> <target-file-path>')
   .action((templateName, targetFilePath) => {
-    generate({ templateName, targetFilePath });
+    generate({ targetFilePath, templateName });
   });
 
 program.command('init').usage('init').action(init);

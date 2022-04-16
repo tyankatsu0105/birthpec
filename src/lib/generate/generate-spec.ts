@@ -1,11 +1,9 @@
-import ejs from 'ejs';
 import * as changeCase from 'change-case';
+import ejs from 'ejs';
 import fm from 'front-matter';
 
-import type { Generate, FrontMatterAttributes } from '../../types';
-
-import { parseFile, loadConfig } from '../../shared';
-
+import { loadConfig, parseFile } from '../../shared';
+import type { FrontMatterAttributes, Generate } from '../../types';
 import { handlingRendered } from './handling-rendered';
 
 const getOptions = (targetFilePath: Generate['targetFilePath']) => {
@@ -17,13 +15,13 @@ const getOptions = (targetFilePath: Generate['targetFilePath']) => {
     changeCase,
   };
 
-  const { fileName, dirName, extensionName } = parseFile(targetFilePath);
+  const { dirName, extensionName, fileName } = parseFile(targetFilePath);
 
   return {
-    helper,
-    fileName,
     dirName,
     extensionName,
+    fileName,
+    helper,
   };
 };
 
@@ -32,16 +30,15 @@ export const generateSpec = (
   template: string,
   exportItems: string[] | null
 ) => {
-  const { helper, fileName, dirName, extensionName } = getOptions(
-    targetFilePath
-  );
+  const { dirName, extensionName, fileName, helper } =
+    getOptions(targetFilePath);
   const rendered = fm<FrontMatterAttributes>(
     ejs.render(template, {
-      fileName,
       dirName,
-      extensionName,
-      helper,
       exportItems,
+      extensionName,
+      fileName,
+      helper,
     })
   );
 

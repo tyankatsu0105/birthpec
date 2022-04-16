@@ -1,10 +1,10 @@
-import fs from 'fs';
 import { parse } from '@typescript-eslint/parser';
 import {
   AST_NODE_TYPES,
-  TSESTree,
   simpleTraverse,
+  TSESTree,
 } from '@typescript-eslint/typescript-estree';
+import fs from 'fs';
 
 import { Generate } from '../../../types';
 
@@ -111,8 +111,8 @@ export const parseTypescript = (targetFilePath: Generate['targetFilePath']) => {
     const template = fs.readFileSync(targetFilePath, { encoding: 'utf-8' });
 
     const ast = parse(template, {
-      sourceType: 'module',
       ecmaFeatures: { jsx: true },
+      sourceType: 'module',
     });
 
     const { exportItems } = getExportItems(ast);

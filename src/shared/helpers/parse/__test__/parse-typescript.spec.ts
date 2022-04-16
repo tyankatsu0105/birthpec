@@ -1,6 +1,7 @@
+import { parse } from '@typescript-eslint/parser';
 import fs from 'fs';
 import path from 'path';
-import { parse } from '@typescript-eslint/parser';
+
 import { getExportItems } from '../parse-typescript';
 
 const getAST = (fixtureFileName: string) => {
@@ -10,8 +11,8 @@ const getAST = (fixtureFileName: string) => {
   );
 
   const ast = parse(template, {
-    sourceType: 'module',
     ecmaFeatures: { jsx: true },
+    sourceType: 'module',
   });
   return { ast };
 };

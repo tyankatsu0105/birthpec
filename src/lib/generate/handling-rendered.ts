@@ -1,8 +1,9 @@
-import fs from 'fs-extra';
 import { prompt } from 'enquirer';
 import type { FrontMatterResult } from 'front-matter';
-import type { FrontMatterAttributes } from '../../types';
+import fs from 'fs-extra';
+
 import { logBox } from '../../shared';
+import type { FrontMatterAttributes } from '../../types';
 
 const parseFrontMatter = (
   rendered: FrontMatterResult<FrontMatterAttributes>
@@ -30,10 +31,10 @@ export const handlingRendered = (
 
     if (isExistFile) {
       const response = await prompt<Prompt>({
-        type: 'confirm',
-        name: 'enableOverride',
-        message: `${to}\nis already exist. Do you override?`,
         initial: false,
+        message: `${to}\nis already exist. Do you override?`,
+        name: 'enableOverride',
+        type: 'confirm',
       });
 
       enableGenerateFile = response.enableOverride;

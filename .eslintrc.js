@@ -1,25 +1,46 @@
-
-/** @type import('eslint').Linter.BaseConfig */
-module.exports = {
+/**
+ * @type {import('eslint').Linter.Config}
+ */
+const config = {
   parserOptions: {
     ecmaVersion: 2018,
   },
   env: {
-    "node": true
+    node: true,
   },
-  parser: '@typescript-eslint/parser',
-  plugins: [
-    '@typescript-eslint',
-    'prettier',
-  ],
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier'
+    'prettier',
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: [
+    'simple-import-sort',
+    'typescript-sort-keys',
+    'sort-keys-fix',
+    'sort-destructure-keys',
+    '@typescript-eslint',
   ],
   rules: {
-    'prettier/prettier': 'error',
-    '@typescript-eslint/explicit-function-return-type': 'off'
-  }
+    'simple-import-sort/exports': 'warn',
+    'simple-import-sort/imports': 'warn',
+    /**
+     * https://github.com/mthadley/eslint-plugin-sort-destructure-keys/blob/master/docs/rules/sort-destructure-keys.md
+     */
+    'sort-destructure-keys/sort-destructure-keys': [
+      'warn',
+      {
+        caseSensitive: false,
+      },
+    ],
+    'sort-keys-fix/sort-keys-fix': 'warn',
+    'typescript-sort-keys/interface': 'warn',
+    'typescript-sort-keys/string-enum': 'warn',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { ignoreRestSiblings: true },
+    ],
+  },
 };
+
+module.exports = config;

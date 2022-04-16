@@ -23,7 +23,7 @@
     "url": "git+https://github.com/tyankatsu0105/birthpec.git"
   },
   "license": "MIT",
-  "author": "tyankatsu <frips.ryilsufupe+dev@gmail.com> (https://tyankatsu.netlify.com/)",
+  "author": "tyankatsu <frips.ryilsufupe+dev@gmail.com> (https://tyankatsu.com/)",
   "main": "dist/cli/index.js",
   "bin": {
     "birthpec": "dist/bin/birthpec.js"
@@ -35,57 +35,54 @@
     "build": "sh scripts/build",
     "precommit": "lint-staged",
     "commit": "git-cz",
+    "lint": "eslint src",
+    "format:lint": "npm run lint -- --fix",
+    "format:prettier": "prettier . --write",
+    "format": "run-s format:lint format:prettier",
     "dev": "tsc -w",
     "release": "shipjs prepare",
     "sandbox": "sh scripts/sandbox",
     "test": "jest",
     "typecheck": "tsc --project ./tsconfig.build.json --noEmit"
   },
-  "lint-staged": {
-    "*.ts": [
-      "eslint --fix"
-    ],
-    "*.{md,yml}": [
-      "prettier --write"
-    ],
-    "package.json": [
-      "npx sort-package-json"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
   "dependencies": {
-    "@typescript-eslint/parser": "^2.32.0",
-    "@typescript-eslint/typescript-estree": "^2.32.0",
-    "boxen": "^4.2.0",
-    "change-case": "^4.1.1",
-    "commander": "^5.1.0",
-    "cosmiconfig": "^6.0.0",
-    "ejs": "^3.1.2",
-    "enquirer": "^2.3.5",
-    "eslint": "^7.0.0",
-    "front-matter": "^3.2.0",
-    "fs-extra": "^9.0.0",
-    "json-schema": "^0.2.5",
-    "typescript": "^3.8.3"
+    "boxen": "^6.2.1",
+    "change-case": "^4.1.2",
+    "commander": "^9.2.0",
+    "cosmiconfig": "^7.0.1",
+    "ejs": "^3.1.6",
+    "enquirer": "^2.3.6",
+    "front-matter": "^4.0.2",
+    "fs-extra": "^10.0.1",
+    "json-schema": "^0.4.0",
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
-    "@types/ejs": "^3.0.3",
-    "@types/eslint": "^6.8.0",
-    "@types/fs-extra": "^8.1.0",
-    "@types/jest": "^25.2.1",
-    "@typescript-eslint/eslint-plugin": "^2.32.0",
-    "commitizen": "^4.1.2",
-    "cz-conventional-changelog": "^3.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "jest": "^26.0.1",
-    "lint-staged": "^10.2.2",
-    "prettier": "^2.0.5",
-    "shipjs": "0.21.0",
-    "ts-jest": "^25.5.1"
+    "@swc/core": "1.2.165",
+    "@swc/jest": "0.2.20",
+    "@types/ejs": "3.1.0",
+    "@types/eslint": "8.4.1",
+    "@types/fs-extra": "9.0.13",
+    "@types/jest": "27.4.1",
+    "@types/node": "17.0.24",
+    "@typescript-eslint/eslint-plugin": "5.19.0",
+    "@typescript-eslint/parser": "5.19.0",
+    "commitizen": "4.2.4",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "eslint-plugin-sort-destructure-keys": "1.4.0",
+    "eslint-plugin-sort-keys-fix": "1.1.2",
+    "eslint-plugin-typescript-sort-keys": "2.1.0",
+    "jest": "27.5.1",
+    "lint-staged": "12.3.8",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.6.2",
+    "shipjs": "0.24.4",
+    "typescript": "4.6.3"
+  },
+  "engines": {
+    "node": "^12 || ^14 || ^16 || ^17"
   }
 }

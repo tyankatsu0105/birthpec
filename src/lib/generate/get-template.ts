@@ -1,7 +1,7 @@
 import fs from 'fs';
-import type { Config, Generate } from '../../types';
 
 import { loadConfig } from '../../shared';
+import type { Config, Generate } from '../../types';
 
 /**
  * Read ejs template contents
