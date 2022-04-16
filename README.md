@@ -248,4 +248,4 @@ birthpec init
 
 ## LICENSE (MIT)
 
-See [LICENSE](https://github.com/tyankatsu0105/birthpec/blob/master/LICENSE)
+See [LICENSE](./LICENSE)
