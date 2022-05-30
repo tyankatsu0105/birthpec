@@ -68,7 +68,7 @@
     "enquirer": "^2.3.5",
     "eslint": "^7.0.0",
     "front-matter": "^3.2.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^10.0.0",
     "json-schema": "^0.2.5",
     "typescript": "^3.8.3"
   },
